@@ -55,7 +55,7 @@ docker run --rm -p 4173:4173 proofloop
 
 ## Rebuildability checklist
 
-- `.nvmrc` pins Node 24.
+- `.nvmrc` pins Node 24.11.0.
 - `package-lock.json` is committed even though the app has no third-party npm dependencies.
 - `Dockerfile` builds and serves the same app on `node:24-alpine`.
 - `npm test` is the single test command; it uses Node's built-in runner.

@@ -5,11 +5,10 @@
   "description": "Proof-carrying automation for decisions you can inspect, interrupt, and prove.",
   "type": "module",
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=24.11.0"
   },
   "scripts": {
     "start": "node server/index.js",
-    "test": "node --test",
-    "check": "node --test"
+    "test": "node --test"
   }
 }
