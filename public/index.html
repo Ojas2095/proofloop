@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07131d" />
+    <title>ProofLoop — inspectable automation</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="ProofLoop home"><span class="brand-mark"><i></i><i></i><i></i></span><span>proof<span>loop</span></span></a>
+        <div class="topbar-meta"><span class="status-dot"></span><span>LOCAL SIMULATION</span><span class="divider"></span><span class="muted">No credentials connected</span></div>
+      </header>
+
+      <main>
+        <section class="hero" id="composer">
+          <div class="eyebrow"><span class="eyebrow-line"></span>THE CONTROL PLANE FOR TRUSTWORTHY AI</div>
+          <h1>Autonomy you can<br /><em>inspect, interrupt,</em> and prove.</h1>
+          <p class="hero-copy">ProofLoop turns a natural-language objective into an observable workflow—with policy gates before action and evidence for every decision.</p>
+          <div class="composer-card">
+            <div class="composer-head"><div><span class="label">YOUR OBJECTIVE</span><span class="chip">✦ local planner</span></div><span class="step-count">01 / 03</span></div>
+            <label class="sr-only" for="goal">Describe an automation objective</label>
+            <textarea id="goal" rows="3">Review this week's vendor invoices, identify likely duplicate charges, prepare refunds under $500, and only execute low-risk refunds. Anything uncertain should require approval.</textarea>
+            <div class="composer-foot"><div class="suggestion"><span class="spark">✦</span> Try the supplied invoice review scenario</div><button class="primary-btn" id="generate" type="button">Generate safe plan <span>→</span></button></div>
+          </div>
+          <div class="trust-strip"><span>BUILT FOR THE MOMENT BEFORE “RUN”</span><span class="trust-item"><b>01</b> Explicit gates</span><span class="trust-item"><b>02</b> Human boundaries</span><span class="trust-item"><b>03</b> Proof, not promises</span></div>
+        </section>
+
+        <section class="workspace hidden" id="workspace" aria-live="polite">
+          <div class="workspace-head"><div><div class="eyebrow"><span class="eyebrow-line"></span>WORKFLOW CONTRACT</div><h2>Review before it runs.</h2></div><div class="run-badge"><span class="status-dot"></span> deterministic replay</div></div>
+          <div class="workspace-grid">
+            <div class="panel plan-panel"><div class="panel-heading"><div><span class="panel-kicker">THE PLAN</span><h3>From intent to steps</h3></div><span class="confidence"><span class="confidence-ring">94</span><span>planner<br />confidence</span></span></div><div class="why-box"><span class="mini-icon">✦</span><div><b>Why this plan?</b><p>The planner surfaced the phrases that become enforceable policy.</p></div></div><div id="plan-steps" class="plan-steps"></div><div id="rationale" class="rationale"></div></div>
+            <div class="panel gates-panel"><div class="panel-heading"><div><span class="panel-kicker">RISK GATES</span><h3>Nothing hidden</h3></div><span class="gate-count" id="gate-count">4 gates</span></div><p class="panel-intro">These conditions are evaluated per candidate. A blocked action is a successful safety outcome.</p><div id="gates" class="gates"></div><div class="policy-note"><span>⌁</span><div><b>Fail-closed by default</b><br /><span>Uncertain ≠ approved. Over-limit ≠ attempted.</span></div></div></div>
+          </div>
+          <div class="action-row"><button class="secondary-btn" id="edit" type="button">← Edit objective</button><button class="primary-btn run-btn" id="run" type="button">Run simulation <span>→</span></button></div>
+        </section>
+
+        <section class="results hidden" id="results">
+          <div class="results-head"><div><div class="eyebrow"><span class="eyebrow-line"></span>REPLAY COMPLETE</div><h2>Every action has a receipt.</h2><p>ProofLoop did not just complete the workflow. It showed why each action was safe, unsafe, or still needed a human.</p></div><div class="result-actions"><button class="ghost-btn" id="export" type="button">⇩ Export evidence</button><button class="primary-btn" id="replay" type="button">↻ Replay run</button></div></div>
+          <div class="metric-grid" id="metrics"></div>
+          <div class="execution-grid"><div class="panel execution-panel"><div class="panel-heading"><div><span class="panel-kicker">EXECUTION CONSOLE</span><h3>What actually happened</h3></div><span class="complete-pill">● COMPLETE</span></div><div class="progress-track"><span></span></div><div id="event-stream" class="event-stream"></div></div><div class="panel ledger-panel"><div class="panel-heading"><div><span class="panel-kicker">EVIDENCE LEDGER</span><h3>Decision receipts</h3></div><span class="ledger-count" id="ledger-count"></span></div><div class="filter-row"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="decision">Decisions</button><button class="filter" data-filter="blocked">Blocked</button><button class="filter" data-filter="outcome">Outputs</button></div><div id="ledger" class="ledger"></div></div></div>
+          <div class="closing-card"><div class="closing-icon">✓</div><div><span class="panel-kicker">THE PROOFLOOP PROMISE</span><h3>Automation should leave a trail you can trust.</h3><p>Same input. Same policy. Same result. Replayable by design.</p></div><button class="secondary-btn" id="restart" type="button">Start another workflow →</button></div>
+        </section>
+      </main>
+      <footer><span>PROOFLOOP / BUILDATHON DEMO</span><span>Deterministic local mode · v1.0</span></footer>
+    </div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
