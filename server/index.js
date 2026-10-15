@@ -18,7 +18,8 @@ function sendJson(response, status, payload) {
 async function serveStatic(response, pathname) {
   const requested = pathname === '/' ? '/index.html' : pathname;
   const file = normalize(join(root, requested));
-  if (!file.startsWith(root + sep) && file !== root) return sendJson(response, 403, { error: 'Forbidden' });
+  const rootPrefix = root.endsWith(sep) ? root : root + sep;
+  if (!file.startsWith(rootPrefix) && file !== root) return sendJson(response, 403, { error: 'Forbidden' });
   try {
     const body = await readFile(file);
     response.writeHead(200, { 'content-type': mime[extname(file)] || 'application/octet-stream', 'cache-control': 'no-store' });
